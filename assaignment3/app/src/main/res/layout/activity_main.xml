@@ -15,6 +15,7 @@
             android:layout_weight="1.5"
             android:text="Retrieve Random Numbers!"
             android:layout_margin="10dp"
+            android:onClick="getRandomNumber"
 
             />
 
