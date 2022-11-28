@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:id="@+id/mainPage">
+
+    <TextureView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="14"
+        android:id="@+id/texture"
+        />
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="7"
+            android:gravity="center"
+            android:text="Portrait Mode"
+            android:textColor="@color/black" />
+
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="false"
+            android:gravity="center"
+            android:text="Dark Mode"
+            android:textColor="@color/black"
+            android:thumbTint="#7d98ad" />
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    android:layout_weight="1"
+    android:orientation="horizontal"
+    android:layout_marginBottom="16dp">
+
+
+        <ImageView
+            android:id="@+id/photoButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/photoButton" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:id="@+id/ll"
+        android:layout_marginBottom="16dp">
+
+<!--        <Button-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:id="@+id/btnPalette"-->
+<!--            android:backgroundTint="#2a9df4"-->
+<!--            android:text="Palette Gallery"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:layout_marginRight="5dp"-->
+<!--            android:layout_marginLeft="5dp"/>-->
+
+<!--        <Button-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:id="@+id/btnTake"-->
+<!--            android:backgroundTint="#2a9df4"-->
+<!--            android:text="Take\nPhoto"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:layout_marginRight="5dp"/>-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btnGallery"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginRight="5dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:backgroundTint="#2a9df4"-->
+<!--            android:text="Photo Gallery"-->
+<!--            android:textColor="@android:color/white" />-->
+
+        <ImageView
+            android:id="@+id/pictureGallaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/pictureGallaryButton" />
+
+
+
+        <ImageView
+            android:id="@+id/colourPalletButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            app:srcCompat="@drawable/colourPalletButton" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".MainActivity">
+
+    <TableRow>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_weight="1.5"
+            android:text="Retrieve Random Numbers!"
+            android:layout_margin="10dp"
+
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:text="Clear all"
+            android:layout_margin="10dp"
+
+            />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/draggable1"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:text="insert"
+            android:background="#f12352"
+            android:layout_margin="10dp"
+            />
+        <TextView
+            android:id="@+id/draggable2"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:text="insert"
+            android:background="#FF5B08"
+            android:layout_margin="10dp"
+
+            />
+        <TextView
+            android:id="@+id/draggable3"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:text="insert"
+            android:background="#69C9FF"
+            android:layout_margin="10dp"
+
+            />
+        <TextView
+            android:id="@+id/draggable4"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:text="insert"
+            android:background="#286B53"
+            android:layout_margin="10dp"
+
+            />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/droppable1"
+            android:layout_width="0dp"
+            android:layout_height="255dp"
+            android:layout_weight="1"
+            android:text="Multiples of 2"
+            android:background="#BDBCB5"
+            android:layout_margin="10dp"
+
+            />
+        <TextView
+            android:id="@+id/droppable2"
+            android:layout_width="0dp"
+            android:layout_height="255dp"
+            android:layout_weight="1"
+            android:text="Multiples of 3"
+            android:background="#BDBCB5"
+            android:layout_margin="10dp"
+
+            />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/droppable3"
+            android:layout_width="0dp"
+            android:layout_height="255dp"
+            android:layout_weight="1"
+            android:text="Multiples of 5"
+            android:background="#BDBCB5"
+            android:layout_margin="10dp"
+
+            />
+        <TextView
+            android:id="@+id/droppable4"
+            android:layout_width="0dp"
+            android:layout_height="255dp"
+            android:layout_weight="1"
+            android:text="Multiples of 10"
+            android:background="#BDBCB5"
+            android:layout_margin="10dp"
+
+            />
+    </TableRow>
+
+
+
+
+
+</TableLayout>

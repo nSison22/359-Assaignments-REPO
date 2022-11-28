@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iamgeViewmain"
+        android:layout_width="match_parent"
+        android:layout_height="494dp" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp">
+
+        <TableRow android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/textViewColourOne"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/textViewColourTwo"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="#4287f5" />
+
+            <TextView
+                android:id="@+id/textViewColourThree"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="#3eb35d" />
+
+            <TextView
+                android:id="@+id/textViewColourFour"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="#85228a" />
+
+            <TextView
+                android:id="@+id/textViewColourFive"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="#c79528" />
+
+        </TableRow>
+
+        <TableRow android:layout_margin="10dp">
+
+            <Button
+                android:id="@+id/saaveitBtn"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:backgroundTint="#2a9df4"
+                android:text="Get Color Inspiration"
+                android:textColor="@color/white" />
+
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>
