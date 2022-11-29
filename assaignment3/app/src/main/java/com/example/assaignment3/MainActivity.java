@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mult5.setOnDragListener(this);
         mult10.setOnDragListener(this);
 //        checkConnection();
+
+
     }
 
 
@@ -66,17 +68,16 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public boolean onDrag(View v, DragEvent dragEvent) {
         switch (dragEvent.getAction()) {
             case DragEvent.ACTION_DRAG_STARTED:
-                Toast.makeText(this,  "ACTION_DRAG_STARTED", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this,  "ACTION_DRAG_STARTED", Toast.LENGTH_SHORT).show();
                 break;
             case DragEvent.ACTION_DRAG_ENTERED:
-                Toast.makeText(this,  "ACTION_DRAG_ENTERED", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this,  "ACTION_DRAG_ENTERED", Toast.LENGTH_SHORT).show();
                 break;
             case DragEvent.ACTION_DRAG_EXITED:
-                Toast.makeText(this,  "ACTION_EXITED", Toast.LENGTH_SHORT).show();//no action necessary
+//                Toast.makeText(this,  "ACTION_EXITED", Toast.LENGTH_SHORT).show();//no action necessary
                 break;
             case DragEvent.ACTION_DROP:
 
-                Toast.makeText(this,  "drop", Toast.LENGTH_SHORT).show();
 
                 //handle the dragged view being dropped over a target view
                 View view = (View) dragEvent.getLocalState();
@@ -91,9 +92,23 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 TextView dropped = (TextView) view;
 
                 //update the text in the target view to reflect the data being dropped
-                if (((TextView) view).getText()!= ""){
+                if (( dropped).getText()!= "" ){
+                    if(dropTarget==mult2 && Integer.parseInt(dropped.getText().toString())%2==0) {
                         dropTarget.setText("" + dropTarget.getText() + "\n" + dropped.getText());
                         ((TextView) view).setText("");
+                    }
+                    if(dropTarget==mult3 && Integer.parseInt(dropped.getText().toString())%3==0) {
+                        dropTarget.setText("" + dropTarget.getText() + "\n" + dropped.getText());
+                        ((TextView) view).setText("");
+                    }
+                    if(dropTarget==mult5 && Integer.parseInt(dropped.getText().toString())%5==0) {
+                        dropTarget.setText("" + dropTarget.getText() + "\n" + dropped.getText());
+                        ((TextView) view).setText("");
+                    }
+                    if(dropTarget==mult10 && Integer.parseInt(dropped.getText().toString())%10==0) {
+                        dropTarget.setText("" + dropTarget.getText() + "\n" + dropped.getText());
+                        ((TextView) view).setText("");
+                    }
 
                 }
 
@@ -148,6 +163,18 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public void getRandomNumber(View view){
 
         new getRandomNumbersJSONDataTask().execute("https://qrng.anu.edu.au/API/jsonI.php?length=4&type=uint8");
+    }
+
+    public void resetValues(View view){
+        randomNum1.setText("___");
+        randomNum2.setText("___");
+        randomNum3.setText("___");
+        randomNum4.setText("___");
+
+        mult2.setText("Multiples of 2");
+        mult3.setText("Multiples of 3");
+        mult5.setText("Multiples of 5");
+        mult10.setText("Multiples of 10");
     }
 
     private String readJSONData(String myurl) throws IOException {
@@ -212,8 +239,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray rndmNumberItems = new JSONArray(jsonObject.getString("data"));
 //                Log.d("values", rndmNumberItems.toString());
-
-//
+                Toast.makeText(getBaseContext(), rndmNumberItems.get(0).toString()+", "+rndmNumberItems.get(1).toString()+", "+rndmNumberItems.get(2).toString()+", "+rndmNumberItems.get(3).toString(), Toast.LENGTH_SHORT).show();
 
                 randomNum1.setText(rndmNumberItems.get(0).toString());
                 randomNum2.setText(rndmNumberItems.get(1).toString());
