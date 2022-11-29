@@ -3,7 +3,10 @@ package com.example.assaignment3;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ClipData;
+import android.content.Context;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
 //    apiKEY:PKFlyIOALB5tBGN6Sf9h9ELrCteQVIk506LoysJg
     TextView randomNum1,randomNum2,randomNum3,randomNum4,mult2,mult3,mult5,mult10;
+    private String result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mult3.setOnDragListener(this);
         mult5.setOnDragListener(this);
         mult10.setOnDragListener(this);
-
-
-
+//        checkConnection();
     }
 
 
@@ -80,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 View view = (View) dragEvent.getLocalState();
 
                 //stop displaying the view where it was before it was dragged
-                view.setVisibility(View.INVISIBLE);
+//                view.setVisibility(View.INVISIBLE);
 
                 //view dragged item is being dropped on
                 TextView dropTarget = (TextView) v;
@@ -89,7 +91,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 TextView dropped = (TextView) view;
 
                 //update the text in the target view to reflect the data being dropped
-                dropTarget.setText(""+ dropTarget.getText()+" = " +dropped.getText());
+                if (((TextView) view).getText()!= ""){
+                        dropTarget.setText("" + dropTarget.getText() + "\n" + dropped.getText());
+                        ((TextView) view).setText("");
+
+                }
 
                 //make it bold to highlight the fact that an item has been dropped
                 dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
@@ -123,7 +129,24 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
 //JSONASYNC TASK METHODS------------------------------------
 
-    public void getRandomNumber(){
+    public void checkConnection(){
+        ConnectivityManager connectMgr =
+                (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectMgr.getActiveNetworkInfo();
+        if(networkInfo != null && networkInfo.isConnected()){
+            //fetch data
+
+            String networkType = networkInfo.getTypeName().toString();
+            Toast.makeText(this, "connected to " + networkType, Toast.LENGTH_LONG).show();
+        }
+        else {
+            //display error
+            Toast.makeText(this, "no network connection", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void getRandomNumber(View view){
+
         new getRandomNumbersJSONDataTask().execute("https://qrng.anu.edu.au/API/jsonI.php?length=4&type=uint8");
     }
 
@@ -149,6 +172,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
             // Convert the InputStream into a string
             String contentAsString = readIt(is, len);
+
             return contentAsString;
 
             // Makes sure that the InputStream is closed after the app is
@@ -169,38 +193,36 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         return new String(buffer);
     }
 
-    private class getRandomNumbersJSONDataTask extends AsyncTask<String,Void,String> {
+    private class getRandomNumbersJSONDataTask extends AsyncTask<String, Void, String> {
 
         Exception exception = null;
 
-        @Override
-            protected String doInBackground(String... urls) {
-                try{
-                    return readJSONData(urls[0]);
-                }catch(IOException e){
-                    exception = e;
-                }
-                return null;
-            }        }
-
-    protected void onPostExecute(String result){
-        try {
-//            JSONObject jsonObject = new JSONObject(result);
-//            JSONObject rndmNumberItems =
-//                    new JSONObject(jsonObject.getString("IDK THIS ONE YET"));
-            JSONObject jsonObject = new JSONObject(result);
-            JSONArray rndmNumberItems = new JSONArray(jsonObject.getJSONArray("data"));
+        protected String doInBackground(String... urls) {
+            try {
+                return readJSONData(urls[0]);
+            } catch (IOException e) {
+                exception = e;
+            }
+            return null;
+        }
 
 
-            Toast.makeText(getBaseContext(),
-                    rndmNumberItems.getString("#OFRANDOMNUMBER") +
-                            " - " + rndmNumberItems.getString("THERANDOMNUMBER"),
-                    Toast.LENGTH_SHORT).show();
+        protected void onPostExecute(String result) {
+            try {
+                JSONObject jsonObject = new JSONObject(result);
+                JSONArray rndmNumberItems = new JSONArray(jsonObject.getString("data"));
+//                Log.d("values", rndmNumberItems.toString());
 
-//                txtLocation.setText("LOCATION: " + weatherObservationItems.getString("stationName"));
+//
 
-        } catch (Exception e) {
-            Log.d("ReadWeatherJSONDataTask", e.getLocalizedMessage());
+                randomNum1.setText(rndmNumberItems.get(0).toString());
+                randomNum2.setText(rndmNumberItems.get(1).toString());
+                randomNum3.setText(rndmNumberItems.get(2).toString());
+                randomNum4.setText(rndmNumberItems.get(3).toString());
+
+            } catch (Exception e) {
+                Toast.makeText(getBaseContext(), "something happened", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
