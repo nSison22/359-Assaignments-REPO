@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -123,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 //JSONASYNC TASK METHODS------------------------------------
 
     public void getRandomNumber(){
-        new getRandomNumbersJSONDataTask().execute("https://api.quantumnumbers.anu.edu.au?length=4&type=uint8");
+        new getRandomNumbersJSONDataTask().execute("https://qrng.anu.edu.au/API/jsonI.php?length=4&type=uint8");
     }
 
     private String readJSONData(String myurl) throws IOException {
@@ -184,14 +185,18 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     protected void onPostExecute(String result){
         try {
+//            JSONObject jsonObject = new JSONObject(result);
+//            JSONObject rndmNumberItems =
+//                    new JSONObject(jsonObject.getString("IDK THIS ONE YET"));
             JSONObject jsonObject = new JSONObject(result);
-            JSONObject weatherObservationItems =
-                    new JSONObject(jsonObject.getString("IDK THIS ONE YET"));
+            JSONArray rndmNumberItems = new JSONArray(jsonObject.getJSONArray("data"));
+
 
             Toast.makeText(getBaseContext(),
-                    weatherObservationItems.getString("#OFRANDOMNUMBER") +
-                            " - " + weatherObservationItems.getString("THERANDOMNUMBER"),
+                    rndmNumberItems.getString("#OFRANDOMNUMBER") +
+                            " - " + rndmNumberItems.getString("THERANDOMNUMBER"),
                     Toast.LENGTH_SHORT).show();
+
 //                txtLocation.setText("LOCATION: " + weatherObservationItems.getString("stationName"));
 
         } catch (Exception e) {
