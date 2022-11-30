@@ -14,6 +14,23 @@ import static com.example.finalproject.R.layout.activity_recyclerviewitem;
 
 import java.util.ArrayList;
 
+//https://www.ethangardner.com/posts/color-theory-math/
+//complementary (2): H1 = |(H0 + 180 degrees) - 360 degrees|
+
+//triad (3):
+//H1 = |(H0 + 120 degrees) - 360 degrees|
+//H2 = |(H0 + 240 degrees) - 360 degrees|
+
+//analogous (2+):
+//formula: H1 = |(H0 + 30 degrees) - 360 degrees|
+//formula: H2 = |(H0 + 60 degrees) - 360 degrees|
+//formula: H3 = |(H0 + 90 degrees) - 360 degrees|
+
+//int rgb = Color.HSBtoRGB(hue, saturation, brightness);
+//        red = (rgb>>16)&0xFF;
+//        green = (rgb>>8)&0xFF;
+//        blue = rgb&0xFF;
+
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
     public ArrayList<String> list;

@@ -68,7 +68,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
     private static final String Tag = "AndroidCameraApi";
-//    private Button btnTake;
+    //    private Button btnTake;
 //    private Button btnGallery;
 //    private Button btnPallete;
     private ImageView btnTake, btnGallery, btnPallete;
@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-//    make the changes on this activity based on the shared prefs values
+    //    make the changes on this activity based on the shared prefs values
     public void updateDarkMode(){
         SharedPreferences sharedPrefs = getSharedPreferences("SharedPref", Context.MODE_PRIVATE);
         Boolean isDark = sharedPrefs.getBoolean("isDark", false);
@@ -214,52 +214,52 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
 
-//adapted code: https://www.youtube.com/watch?v=MhsG3jYEsek&t=901s
+    //adapted code: https://www.youtube.com/watch?v=MhsG3jYEsek&t=901s
     TextureView.SurfaceTextureListener textureListener = new TextureView.SurfaceTextureListener() {
-    @Override
-    public void onSurfaceTextureAvailable(@NonNull SurfaceTexture surfaceTexture, int i, int i1) {
-        openCamera();
-    }
-
-    @Override
-    public void onSurfaceTextureSizeChanged(@NonNull SurfaceTexture surfaceTexture, int i, int i1) {
-
-    }
-
-    @Override
-    public boolean onSurfaceTextureDestroyed(@NonNull SurfaceTexture surfaceTexture) {
-        return false;
-    }
-
-    @Override
-    public void onSurfaceTextureUpdated(@NonNull SurfaceTexture surfaceTexture) {
-
-    }
-};
-
-//    open the camera so photos can be taken
-    private void openCamera() {
-    CameraManager manager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
-    try {
-        cameraId = manager.getCameraIdList()[0];
-        CameraCharacteristics characteristics = manager.getCameraCharacteristics(cameraId);
-        StreamConfigurationMap map = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
-        assert map != null;
-        imageDimension = map.getOutputSizes(SurfaceTexture.class)[0];
-
-        //add premission for camera and let user grant the permission
-        if ((ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) && (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)) {
-            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, Request_CAMERA_PERMISSION);
-            return;
+        @Override
+        public void onSurfaceTextureAvailable(@NonNull SurfaceTexture surfaceTexture, int i, int i1) {
+            openCamera();
         }
 
-        manager.openCamera(cameraId, stateCallback, null);
-    } catch (CameraAccessException e) {
-        e.printStackTrace();
-    }
-}
+        @Override
+        public void onSurfaceTextureSizeChanged(@NonNull SurfaceTexture surfaceTexture, int i, int i1) {
 
-//take a photo; called when the corresponding button was pressed
+        }
+
+        @Override
+        public boolean onSurfaceTextureDestroyed(@NonNull SurfaceTexture surfaceTexture) {
+            return false;
+        }
+
+        @Override
+        public void onSurfaceTextureUpdated(@NonNull SurfaceTexture surfaceTexture) {
+
+        }
+    };
+
+    //    open the camera so photos can be taken
+    private void openCamera() {
+        CameraManager manager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+        try {
+            cameraId = manager.getCameraIdList()[0];
+            CameraCharacteristics characteristics = manager.getCameraCharacteristics(cameraId);
+            StreamConfigurationMap map = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
+            assert map != null;
+            imageDimension = map.getOutputSizes(SurfaceTexture.class)[0];
+
+            //add premission for camera and let user grant the permission
+            if ((ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) && (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)) {
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, Request_CAMERA_PERMISSION);
+                return;
+            }
+
+            manager.openCamera(cameraId, stateCallback, null);
+        } catch (CameraAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //take a photo; called when the corresponding button was pressed
 //    save the photo on the device in the app if allowed
     protected void takePicture() {
         if (cameraDevice == null) {
@@ -311,7 +311,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 }
 
                 ImageReader.OnImageAvailableListener readerListener = new ImageReader.OnImageAvailableListener() {
-//                   get the image from the camera using callback
+                    //                   get the image from the camera using callback
                     @Override
                     public void onImageAvailable(ImageReader imageReader) {
                         Image image = null;
@@ -332,7 +332,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                         }
                     }
 
-//                   save the image in data of raw bytes to file for storing
+                    //                   save the image in data of raw bytes to file for storing
                     private void save(byte[] bytes) throws IOException {
                         OutputStream output = null;
                         try {
@@ -352,14 +352,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     @Override
                     public void onCaptureStarted(@NonNull CameraCaptureSession session, @NonNull CaptureRequest request, long timestamp, long frameNumber) {
                         super.onCaptureStarted(session, request, timestamp, frameNumber);
-                         Toast.makeText(MainActivity.this, "Saved: " + file, Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "Saved: " + file, Toast.LENGTH_LONG).show();
                         Log.e(Tag, "Saved: " + file);
                         createCameraPreview();
                     }
                 };
 
                 cameraDevice.createCaptureSession(outputSurfaces, new CameraCaptureSession.StateCallback() {
-//                   camera has finishe dconfiguring and session starts processing capture requests
+                    //                   camera has finishe dconfiguring and session starts processing capture requests
                     @Override
                     public void onConfigured(@NonNull CameraCaptureSession session) {
                         try {
@@ -403,7 +403,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     };
 
-//check to see if the storage is read only
+    //check to see if the storage is read only
     private static boolean isExternalStorageReadOnly() {
         String extStorageState = Environment.getExternalStorageState();
         if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(extStorageState)) {
@@ -423,7 +423,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         return false;
     }
 
-//    check to see if permission is granted to write to external storage
+    //    check to see if permission is granted to write to external storage
     private boolean isStoragePermissionGranted() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
@@ -493,7 +493,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 //        }
 
 
-//    if the camera access in app has not been allowed
+    //    if the camera access in app has not been allowed
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
@@ -526,7 +526,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sensorManager.unregisterListener(this);
     }
 
-//    check acclerometer values for portrait mode and landscape mode
+    //    check acclerometer values for portrait mode and landscape mode
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
         if (sensorEvent.sensor.getType() == sensor.getType()){

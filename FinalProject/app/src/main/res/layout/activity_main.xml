@@ -17,6 +17,23 @@
         />
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+
+        <ImageView
+            android:id="@+id/photoButton"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/photo_button" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -46,22 +63,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="65dp"
-    android:layout_weight="1"
-    android:orientation="horizontal"
-    android:layout_marginBottom="16dp">
-
-
-        <ImageView
-            android:id="@+id/photoButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/photoButton" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -71,43 +72,43 @@
         android:id="@+id/ll"
         android:layout_marginBottom="16dp">
 
-<!--        <Button-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:id="@+id/btnPalette"-->
-<!--            android:backgroundTint="#2a9df4"-->
-<!--            android:text="Palette Gallery"-->
-<!--            android:textColor="@android:color/white"-->
-<!--            android:layout_marginRight="5dp"-->
-<!--            android:layout_marginLeft="5dp"/>-->
+        <!--        <Button-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_weight="1"-->
+        <!--            android:id="@+id/btnPalette"-->
+        <!--            android:backgroundTint="#2a9df4"-->
+        <!--            android:text="Palette Gallery"-->
+        <!--            android:textColor="@android:color/white"-->
+        <!--            android:layout_marginRight="5dp"-->
+        <!--            android:layout_marginLeft="5dp"/>-->
 
-<!--        <Button-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:id="@+id/btnTake"-->
-<!--            android:backgroundTint="#2a9df4"-->
-<!--            android:text="Take\nPhoto"-->
-<!--            android:textColor="@android:color/white"-->
-<!--            android:layout_marginRight="5dp"/>-->
+        <!--        <Button-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_weight="1"-->
+        <!--            android:id="@+id/btnTake"-->
+        <!--            android:backgroundTint="#2a9df4"-->
+        <!--            android:text="Take\nPhoto"-->
+        <!--            android:textColor="@android:color/white"-->
+        <!--            android:layout_marginRight="5dp"/>-->
 
-<!--        <Button-->
-<!--            android:id="@+id/btnGallery"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginRight="5dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:backgroundTint="#2a9df4"-->
-<!--            android:text="Photo Gallery"-->
-<!--            android:textColor="@android:color/white" />-->
+        <!--        <Button-->
+        <!--            android:id="@+id/btnGallery"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginRight="5dp"-->
+        <!--            android:layout_weight="1"-->
+        <!--            android:backgroundTint="#2a9df4"-->
+        <!--            android:text="Photo Gallery"-->
+        <!--            android:textColor="@android:color/white" />-->
 
         <ImageView
             android:id="@+id/pictureGallaryButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/pictureGallaryButton" />
+            app:srcCompat="@drawable/picture_gallary_button" />
 
 
 
@@ -116,7 +117,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            app:srcCompat="@drawable/colourPalletButton" />
+            app:srcCompat="@drawable/colour_pallet_button" />
     </LinearLayout>
 
 </LinearLayout>

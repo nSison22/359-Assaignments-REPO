@@ -7,67 +7,78 @@
     <ImageView
         android:id="@+id/iamgeViewmain"
         android:layout_width="match_parent"
-        android:layout_height="494dp" />
+        android:layout_height="500dp" />
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="80dp"
         android:layout_marginTop="10dp">
-
-        <TableRow android:layout_margin="10dp">
+        <TableRow
+            android:layout_margin="8dp">
 
             <TextView
-                android:id="@+id/textViewColourOne"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:background="@color/black" />
+                android:background="@color/black"
+                android:id="@+id/textViewColourOne"/>
 
             <TextView
                 android:id="@+id/textViewColourTwo"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:background="#4287f5" />
-
             <TextView
-                android:id="@+id/textViewColourThree"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:background="#3eb35d" />
-
+                android:background="#3eb35d"
+                android:layout_margin="5dp"
+                android:id="@+id/textViewColourThree"/>
             <TextView
-                android:id="@+id/textViewColourFour"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:background="#85228a" />
-
+                android:background="#85228a"
+                android:layout_margin="5dp"
+                android:id="@+id/textViewColourFour"/>
             <TextView
-                android:id="@+id/textViewColourFive"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:background="#c79528" />
+                android:background="#c79528"
+                android:layout_margin="5dp"
+                android:id="@+id/textViewColourFive"/>
 
         </TableRow>
-
-        <TableRow android:layout_margin="10dp">
+    </TableLayout>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp">
+        <TableRow
+            android:layout_margin="10dp">
 
             <Button
-                android:id="@+id/saaveitBtn"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_weight="1"
+                android:id="@+id/saaveitBtn"
                 android:backgroundTint="#2a9df4"
                 android:text="Get Color Inspiration"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@color/white"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/imageViewQR"/>
 
         </TableRow>
 

@@ -101,12 +101,12 @@ public class Database {
     }
 
     //retrieve everything from the database except for the id
-    public String getSelectedColours(String selectorColor) {
+    public String getSelectedColours(String imagepath) {
         //select plants from database of type 'herb'
         SQLiteDatabase db = helper.getWritableDatabase();
         String[] columns = {DatabaseConstants.COLOR1, DatabaseConstants.COLOR2,DatabaseConstants.COLOR3,DatabaseConstants.COLOR4,DatabaseConstants.COLOR5,DatabaseConstants.IMAGE_PATH};
 
-        String selection = DatabaseConstants.COLOR1 + "='" +selectorColor+ "'";  //Constants.TYPE = 'type'
+        String selection = DatabaseConstants.IMAGE_PATH + "='" +imagepath+ "'";  //Constants.TYPE = 'type'
         Cursor cursor = db.query(DatabaseConstants.TABLE_NAME, columns, selection, null, null, null, null);
 
         StringBuffer buffer = new StringBuffer();
@@ -117,15 +117,13 @@ public class Database {
             int index3 = cursor.getColumnIndex(DatabaseConstants.COLOR3);
             int index4 = cursor.getColumnIndex(DatabaseConstants.COLOR4);
             int index5 = cursor.getColumnIndex(DatabaseConstants.COLOR5);
-            int index6 = cursor.getColumnIndex(DatabaseConstants.IMAGE_PATH);
 
             String color1 = cursor.getString(index1);
             String color2 = cursor.getString(index2);
             String color3 = cursor.getString(index3);
             String color4 = cursor.getString(index4);
             String color5 = cursor.getString(index5);
-            String imagePath = cursor.getString(index6);
-            buffer.append(color1 + " " + color2 + " " + color3 + " " + color4 + " " + color5 + " " + imagePath + "\n");
+            buffer.append(color1 + " " + color2 + " " + color3 + " " + color4 + " " + color5 );
         }
         return buffer.toString();
     }

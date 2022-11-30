@@ -27,6 +27,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -42,6 +48,8 @@ public class ViewPagerAdapter extends PagerAdapter {
     Bitmap bitmap;
     Button saveitButton;
     Database database;
+
+    ImageView imageViewQR;
 
     public ViewPagerAdapter(Context context, ArrayList<String> imagePaths){
         this.context = context;
@@ -82,6 +90,7 @@ public class ViewPagerAdapter extends PagerAdapter {
         View itemView = mLayoutInflater.inflate(R.layout.galleryitem, container, false);
 
         saveitButton = (Button)itemView.findViewById(R.id.saaveitBtn);
+        imageViewQR = (ImageView) itemView.findViewById(R.id.imageViewQR);
         saveitButton.setOnClickListener(new View.OnClickListener() {
 
             //open saveeit webview in separate activity
@@ -120,18 +129,40 @@ public class ViewPagerAdapter extends PagerAdapter {
 
         Log.e("bitmap", "setting bitmap to new image");
 
-        CalculatePalette task = new CalculatePalette(position);
-        Log.e("Instantiateitem calc", position + "");
-        task.execute();
-        //calculatePalette();
+        if (!paletteExist(position)){
+            CalculatePalette task = new CalculatePalette(position);
+            Log.e("Instantiateitem calc", position + "");
+            task.execute();
+        }
 
-       // alterDatabase(position);
-
+        generateQR(position);
         updateDarkMode();
 
         //adding the view
         Objects.requireNonNull(container).addView(itemView);
         return itemView;
+    }
+
+    public boolean paletteExist(int position){
+        for (int i = 0; i < database.getProfilesCount();i++){
+            Log.e("Database i", i + "");
+            Log.e("database" , database.getSelectedImagePath(imagePaths.get(i)));
+//            Log.e("photo   " , imagePaths.get(position));
+
+            if (imagePaths.get(position).equals(database.getSelectedImagePath(imagePaths.get(i)))) {
+                String colours = database.getSelectedColours(imagePaths.get(position));
+                String[] colourSplit = colours.split(" ");
+                Log.e("palette check", colourSplit[0] + "");
+
+                textViewColourOne.setBackgroundColor(Color.parseColor("#" + colourSplit[0]));
+                textViewColourTwo.setBackgroundColor(Color.parseColor("#" + colourSplit[1]));
+                textViewColourThree.setBackgroundColor(Color.parseColor("#" + colourSplit[2]));
+                textViewColourFour.setBackgroundColor(Color.parseColor("#" + colourSplit[3]));
+                textViewColourFive.setBackgroundColor(Color.parseColor("#" + colourSplit[4]));
+                return true;
+            }
+        }
+        return false;
     }
 
     public void alterDatabase(int position){
@@ -173,6 +204,26 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     }
 
+//    https://www.youtube.com/watch?v=qBUDFpJ5Nc0&t=0s
+    private void generateQR(int position){
+        String string = database.getSelectedColours(imagePaths.get(position));
+        MultiFormatWriter writer = new MultiFormatWriter();
+        Log.e("QR and database", string+ "");
+        try{
+            if (!string.equals("")){
+                BitMatrix  matrix = writer.encode(string, BarcodeFormat.QR_CODE, 200, 200);
+                BarcodeEncoder encoder = new BarcodeEncoder();
+                Bitmap bitmapQR = encoder.createBitmap(matrix);
+
+                imageViewQR.setImageBitmap(bitmapQR);
+                Log.e("qr code", "qrcode generated");
+            }
+
+        }catch(WriterException e){
+            e.printStackTrace();
+        }
+    }
+
 
 
     @Override
@@ -210,7 +261,7 @@ public class ViewPagerAdapter extends PagerAdapter {
             textViewColourFive.setBackgroundColor(Color.rgb(buckets[Five][0]/buckets[Five][3], buckets[Five][1]/buckets[Five][3], buckets[Five][2]/buckets[Five][3]));
 
             alterDatabase(position);
-
+            generateQR(position);
 //            reset = true;
         }
 

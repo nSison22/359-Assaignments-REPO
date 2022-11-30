@@ -62,7 +62,7 @@ public class CustomGalleryActivity extends AppCompatActivity {
 //    change the UI based on shared prefs
     public void updateDarkMode() {
         SharedPreferences sharedPrefs = getSharedPreferences("SharedPref", Context.MODE_PRIVATE);
-        Boolean isDark = sharedPrefs.getBoolean("isDark", false);
+        Boolean isDark = sharedPrefs.getBoolean("isDark", true);
 
         Log.e("sharedPref", isDark + "");
 

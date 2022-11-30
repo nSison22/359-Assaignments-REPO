@@ -62,7 +62,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
     public void updateDarkMode(){
         SharedPreferences sharedPrefs = getSharedPreferences("SharedPref", Context.MODE_PRIVATE);
-        Boolean isDark = sharedPrefs.getBoolean("isDark", false);
+        Boolean isDark = sharedPrefs.getBoolean("isDark", true);
 
         Log.e("sharedPref", isDark + "");
 

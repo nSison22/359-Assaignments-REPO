@@ -33,50 +33,50 @@
         android:orientation="horizontal">
 
         <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:text="#####"
-        android:id="@+id/colorTextView1"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:background="#123456"
-        />
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="#####"
+            android:id="@+id/colorTextView1"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="#123456"
+            />
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:text="######"
-        android:id="@+id/colorTextView2"
-        android:layout_weight="1"
-        android:background="#654321"
-        android:gravity="center" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="######"
+            android:id="@+id/colorTextView2"
+            android:layout_weight="1"
+            android:background="#654321"
+            android:gravity="center" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:text="#####"
-        android:id="@+id/colorTextView3"
-        android:layout_weight="1"
-        android:background="#132436"
-        android:gravity="center" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="#####"
+            android:id="@+id/colorTextView3"
+            android:layout_weight="1"
+            android:background="#132436"
+            android:gravity="center" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:text="#####"
-        android:id="@+id/colorTextView4"
-        android:layout_weight="1"
-        android:background="#432516"
-        android:gravity="center" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:text="#####"
-        android:id="@+id/colorTextView5"
-        android:layout_weight="1"
-        android:background="#615243"
-        android:gravity="center" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="#####"
+            android:id="@+id/colorTextView4"
+            android:layout_weight="1"
+            android:background="#432516"
+            android:gravity="center" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="#####"
+            android:id="@+id/colorTextView5"
+            android:layout_weight="1"
+            android:background="#615243"
+            android:gravity="center" />
 
     </LinearLayout>
 
