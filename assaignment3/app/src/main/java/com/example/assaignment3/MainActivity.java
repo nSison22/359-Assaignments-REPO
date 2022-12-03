@@ -48,11 +48,13 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mult5=(TextView)findViewById(R.id.droppable3);
         mult10=(TextView)findViewById(R.id.droppable4);
 
+        //views to drag are are set with OnTouchListeners
         randomNum1.setOnTouchListener(this);
         randomNum2.setOnTouchListener(this);
         randomNum3.setOnTouchListener(this);
         randomNum4.setOnTouchListener(this);
 
+        //views to to be droppable to onDragListeners
         mult2.setOnDragListener(this);
         mult3.setOnDragListener(this);
         mult5.setOnDragListener(this);
@@ -82,8 +84,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 //handle the dragged view being dropped over a target view
                 View view = (View) dragEvent.getLocalState();
 
-                //stop displaying the view where it was before it was dragged
-//                view.setVisibility(View.INVISIBLE);
 
                 //view dragged item is being dropped on
                 TextView dropTarget = (TextView) v;
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 //view being dragged and dropped
                 TextView dropped = (TextView) view;
 
-                //update the text in the target view to reflect the data being dropped
+                //if the dragged item has text in it, it will update the dropTarget text if they meet the conditions
                 if (( dropped).getText()!= "" ){
                     if(dropTarget==mult2 && Integer.parseInt(dropped.getText().toString())%2==0) {
                         dropTarget.setText("" + dropTarget.getText() + "\n" + dropped.getText());
@@ -144,6 +144,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
 //JSONASYNC TASK METHODS------------------------------------
 
+
+    //checks if the app is connected to the internet
     public void checkConnection(){
         ConnectivityManager connectMgr =
                 (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -160,16 +162,18 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         }
     }
 
+    //onClick function that initiates the AsyncTask using the web service
     public void getRandomNumber(View view){
 
         new getRandomNumbersJSONDataTask().execute("https://qrng.anu.edu.au/API/jsonI.php?length=4&type=uint8");
     }
 
+    //onClick function that sets the text to the original state
     public void resetValues(View view){
-        randomNum1.setText("___");
-        randomNum2.setText("___");
-        randomNum3.setText("___");
-        randomNum4.setText("___");
+        randomNum1.setText("");
+        randomNum2.setText("");
+        randomNum3.setText("");
+        randomNum4.setText("");
 
         mult2.setText("Multiples of 2");
         mult3.setText("Multiples of 3");
@@ -224,6 +228,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         Exception exception = null;
 
+            //if the data is available, it will return the Json Object
         protected String doInBackground(String... urls) {
             try {
                 return readJSONData(urls[0]);
@@ -236,11 +241,12 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         protected void onPostExecute(String result) {
             try {
+                //instaniate Json Object and then extract the json array by accessing the  key data
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray rndmNumberItems = new JSONArray(jsonObject.getString("data"));
 //                Log.d("values", rndmNumberItems.toString());
                 Toast.makeText(getBaseContext(), rndmNumberItems.get(0).toString()+", "+rndmNumberItems.get(1).toString()+", "+rndmNumberItems.get(2).toString()+", "+rndmNumberItems.get(3).toString(), Toast.LENGTH_SHORT).show();
-
+            //set the textviews to the 4 random numbers in the array.
                 randomNum1.setText(rndmNumberItems.get(0).toString());
                 randomNum2.setText(rndmNumberItems.get(1).toString());
                 randomNum3.setText(rndmNumberItems.get(2).toString());
