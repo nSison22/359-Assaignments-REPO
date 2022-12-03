@@ -42,6 +42,7 @@ import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private TextureView textureView;
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
     private Switch darkModeSwitch;
-    private LinearLayout mainPageLayout;
+    private FrameLayout mainPageLayout;
 
     static {
         ORIENTATIONS.append(Surface.ROTATION_0, 90);
@@ -107,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mainPageLayout = (LinearLayout)findViewById(R.id.mainPage);
+        mainPageLayout = (FrameLayout)findViewById(R.id.mainPage);
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);

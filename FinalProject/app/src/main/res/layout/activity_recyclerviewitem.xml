@@ -5,32 +5,27 @@
     android:id="@+id/GallaryLayout"
     android:layout_marginTop="10dp"
     android:baselineAligned="true"
-    android:background="#686E73"
     >
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        >
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:text="Give Colour pallet a name"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout"
+        android:id="@+id/OgPalletlayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#686E73"
+        >
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Pallet Name"
+            android:textSize="15dp"
+            android:id="@+id/palletName"
+            android:layout_weight="0"
+            android:gravity="center"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -46,7 +41,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:text="######"
+            android:text="#####"
             android:id="@+id/colorTextView2"
             android:layout_weight="1"
             android:background="#654321"
@@ -79,5 +74,213 @@
             android:gravity="center" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ExpandableLayout"
+        android:layout_marginTop="10dp"
+        android:baselineAligned="true"
+        android:layout_margin="10dp"
+        >
+
+        <LinearLayout
+            android:id="@+id/ComplemnataryLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Complemnatary "
+                android:textSize="15dp"
+                android:id="@+id/Complemnatary"
+                android:layout_weight="1"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="#####"
+                android:id="@+id/complemnataryColorTextView1"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="#123456"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="#####"
+                android:id="@+id/complemnataryColorTextView2"
+                android:layout_weight="1"
+                android:background="#654321"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="#####"
+                android:id="@+id/complemnataryColorTextView3"
+                android:layout_weight="1"
+                android:background="#132436"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="#####"
+                android:id="@+id/complemnataryColorTextView4"
+                android:layout_weight="1"
+                android:background="#432516"
+                android:gravity="center" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="#####"
+                android:id="@+id/complemnataryColorTextView5"
+                android:layout_weight="1"
+                android:background="#615243"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/AnalogusLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Analogus "
+                android:textSize="15dp"
+                android:id="@+id/Analogus"
+                android:layout_weight="1"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="#####"
+                android:id="@+id/analogusColorTextView1"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="#123456"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="#####"
+                android:id="@+id/analogusColorTextView2"
+                android:layout_weight="1"
+                android:background="#654321"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="#####"
+                android:id="@+id/analogusColorTextView3"
+                android:layout_weight="1"
+                android:background="#132436"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="#####"
+                android:id="@+id/analogusColorTextView4"
+                android:layout_weight="1"
+                android:background="#432516"
+                android:gravity="center" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="#####"
+                android:id="@+id/analogusColorTextView5"
+                android:layout_weight="1"
+                android:background="#615243"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/TriadLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Triad "
+                android:textSize="15dp"
+                android:id="@+id/Triad"
+                android:layout_weight="1"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="#####"
+                android:id="@+id/triadColorTextView1"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="#123456"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="#####"
+                android:id="@+id/triadColorTextView2"
+                android:layout_weight="1"
+                android:background="#654321"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="#####"
+                android:id="@+id/triadColorTextView3"
+                android:layout_weight="1"
+                android:background="#132436"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="#####"
+                android:id="@+id/triadColorTextView4"
+                android:layout_weight="1"
+                android:background="#432516"
+                android:gravity="center" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="#####"
+                android:id="@+id/triadColorTextView5"
+                android:layout_weight="1"
+                android:background="#615243"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 
 </LinearLayout>

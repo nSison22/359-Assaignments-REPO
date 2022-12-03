@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 import static com.example.finalproject.R.layout.activity_recyclerviewitem;
@@ -35,6 +36,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public ArrayList<String> list;
     Context context;
+    static boolean expand=false;
 
     public RecyclerViewAdapter(ArrayList<String> list) {
         this.list=list;
@@ -62,6 +64,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.color4TextView.setBackgroundColor(Color.parseColor("#"+results[3]));
         holder.color5TextView.setText("#" + results[4]);
         holder.color5TextView.setBackgroundColor(Color.parseColor("#"+results[4]));
+//
+//        if(!expand) holder.expandableLayout.setVisibility(View.INVISIBLE);
+//        else holder.expandableLayout.setVisibility(View.VISIBLE);
+        holder.expandableLayout.setVisibility(expand ? View.VISIBLE : View.GONE);
 
     }
 
@@ -70,20 +76,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return list.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView color1TextView;
-        public TextView color2TextView;
-        public TextView color3TextView;
-        public TextView color4TextView;
-        public TextView color5TextView;
+        public TextView color1TextView,color2TextView, color3TextView,color4TextView,color5TextView;
+
+        public TextView aColor1TextView,aColor2TextView, aColor3TextView, aColor4TextView, aColor5TextView;
+        public TextView cColor1TextView,cColor2TextView, cColor3TextView, cColor4TextView, cColor5TextView;
+        public TextView tColor1TextView, tColor2TextView, tColor3TextView, tColor4TextView, tColor5TextView;
+
 
         public LinearLayout myLayout;
+        public LinearLayout expandableLayout;
         Context context;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            myLayout = (LinearLayout) itemView;
+            myLayout = (LinearLayout) itemView.findViewById(R.id.OgPalletlayout);
+            expandableLayout= (LinearLayout) itemView.findViewById(R.id.ExpandableLayout);
 
             color1TextView = (TextView) itemView.findViewById(R.id.colorTextView1);
             color2TextView = (TextView) itemView.findViewById(R.id.colorTextView2);
@@ -91,14 +100,45 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             color4TextView = (TextView) itemView.findViewById(R.id.colorTextView4);
             color5TextView = (TextView) itemView.findViewById(R.id.colorTextView5);
 
-            itemView.setOnClickListener(this);
+            aColor1TextView = (TextView) itemView.findViewById(R.id.analogusColorTextView1);
+            aColor2TextView = (TextView) itemView.findViewById(R.id.analogusColorTextView2);
+            aColor3TextView = (TextView) itemView.findViewById(R.id.analogusColorTextView3);
+            aColor4TextView = (TextView) itemView.findViewById(R.id.analogusColorTextView4);
+            aColor5TextView = (TextView) itemView.findViewById(R.id.analogusColorTextView5);
+
+            cColor1TextView = (TextView) itemView.findViewById(R.id.complemnataryColorTextView1);
+            cColor2TextView = (TextView) itemView.findViewById(R.id.complemnataryColorTextView2);
+            cColor3TextView = (TextView) itemView.findViewById(R.id.complemnataryColorTextView3);
+            cColor4TextView = (TextView) itemView.findViewById(R.id.complemnataryColorTextView4);
+            cColor5TextView = (TextView) itemView.findViewById(R.id.complemnataryColorTextView5);
+
+            tColor1TextView = (TextView) itemView.findViewById(R.id.triadColorTextView1);
+            tColor2TextView = (TextView) itemView.findViewById(R.id.triadColorTextView2);
+            tColor3TextView = (TextView) itemView.findViewById(R.id.triadColorTextView3);
+            tColor4TextView = (TextView) itemView.findViewById(R.id.triadColorTextView4);
+            tColor5TextView = (TextView) itemView.findViewById(R.id.triadColorTextView5);
+
+
+//            itemView.setOnClickListener(this);
             context = itemView.getContext();
 
+            myLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    if(!expand) expand=true;
+                    else expand=false;
+                    Toast.makeText(context, ""+expand, Toast.LENGTH_SHORT).show();
+                    notifyItemChanged(getAdapterPosition());
+                }
+            });
+
+
+
         }
 
-        @Override
-        public void onClick(View view) {
-        }
+
+
     }
 
 }
